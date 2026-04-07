@@ -1,6 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+require('dotenv').config();
+
 // Ajustado para o caminho que aparece na sua imagem:
 const Tarefa = require('./backend/models/Tarefa'); 
 
@@ -10,11 +12,12 @@ app.use(cors());
 app.use(express.json());
 
 // Conexão com o MongoDB
+require('dotenv').config();
+
 mongoose
-  .connect('mongodb+srv://vinnyStaff:8A0pIbtfAKD62NzL@clustervinny.gjvrztf.mongodb.net/?appName=ClusterVinny')
+  .connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB Atlas conectado'))
   .catch((err) => console.log('Erro ao conectar ao MongoDB:', err));
-
 
 // Rotas da API
 app.post('/tarefas', async (req, res) => {
@@ -38,4 +41,6 @@ app.delete('/tarefas/:id', async (req, res) => {
 });
 
 // Inicialização do servidor
-app.listen(3000, () => console.log('Servidor rodando na porta 3000'));
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
