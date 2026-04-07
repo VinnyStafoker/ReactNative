@@ -11,7 +11,7 @@ app.use(express.json());
 
 // Conexão com o MongoDB
 mongoose
-  .connect('mongodb+srv://vinnyStaff:tUdljH1dKvB5MAQx@clustervinny.gjvrztf.mongodb.net/?appName=ClusterVinny')
+  .connect('mongodb+srv://vinnyStaff:8A0pIbtfAKD62NzL@clustervinny.gjvrztf.mongodb.net/?appName=ClusterVinny')
   .then(() => console.log('MongoDB Atlas conectado'))
   .catch((err) => console.log('Erro ao conectar ao MongoDB:', err));
 
